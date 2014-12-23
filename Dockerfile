@@ -13,7 +13,9 @@ RUN apt-get -y update
 
 RUN mkdir -p /root/lo
 ADD lobuild/libreoffice_core.tar.gz /root/lo
-ADD lobuild/lo_cpputests_off.diff /root/lo 
+ADD lobuild/test_off.diff /root/lo 
+ADD lobuild/lo_platform_configure_ac.diff roo/lo
+
 WORKDIR /root/lo
 RUN apt-get -y install wget curl git
 RUN git checkout -f
@@ -21,9 +23,24 @@ RUN git checkout -f
 RUN apt-get -y update
 RUN apt-get -y build-dep  libreoffice
 
-./autogen.sh --host=i586-unknown-linux-gnu --disable-crashdump --disable-sdremote --disable-telepathy --disable-cve-tests --disable-online-update --disable-liblangtag --with-build-version="Built by hernad"  --disable-gltf --without-galleries --enable-release-build
+RUN patch -p1 < test_off.diff
+# product LibreOffice -> LO_Platform
+RUN patch -p1 < lo_platform_configure_ac.diff
 
-#RUN make
-patch -p1 < lo_cpputests_off.diff
+RUN ./autogen.sh --host=i586-unknown-linux-gnu --disable-crashdump --disable-sdremote --disable-telepathy --disable-cve-tests --disable-online-update --disable-liblangtag --with-build-version="Built by hernad"  --disable-gltf --without-galleries --enable-release-build
 
+RUN make
+
+WORKDIR /root/lo/instdir
+RUN zip -r LO_Platform.zip LIC* CRE* NOT* help presets program share
+RUN zip -r LO_Platform_sdk.zip sdk
+
+ADD hernad_ssh.key /root 
+RUN chmod 0600 /root/hernad_ssh.key
+
+RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no LO_Platform.zip root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/linux32
+RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no LO_Platform_sdk.zip root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/linux32/
+
+RUN ssh -i /root/hernad_ssh.key -o StrictHostKeyChecking=no LO_Platform.zip root@files.bring.out.ba chown hernad /mnt/HD/HD_a2/bringout/Platform/linux32/LO_Platform*.zip
+ 
 CMD ["bash"]
