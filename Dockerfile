@@ -26,7 +26,8 @@ RUN patch -f -p1 < test_off.diff ; echo ignore patch exit
 # product LibreOffice -> LO_Platform
 RUN patch -f -p1 < lo_platform_configure_ac.diff ; echo ignore patch exit
 
-RUN ./autogen.sh --host=i586-unknown-linux-gnu --disable-crashdump --disable-sdremote --disable-telepathy --disable-cve-tests --disable-online-update --disable-liblangtag --with-build-version="Built by hernad"  --disable-gltf --without-galleries --enable-release-build --enable-epm --with-package-format="deb rpm"
+#RUN ./autogen.sh --host=i586-unknown-linux-gnu --disable-crashdump --disable-sdremote --disable-telepathy --disable-cve-tests --disable-online-update --disable-liblangtag --with-build-version="Built by hernad"  --disable-gltf --without-galleries --enable-release-build --enable-epm --with-package-format="deb rpm"
+RUN ./autogen.sh --host=i586-unknown-linux-gnu --disable-crashdump --disable-sdremote --disable-telepathy --disable-cve-tests --disable-online-update --disable-liblangtag --with-build-version="Built by hernad"  --disable-gltf --without-galleries --enable-release-build --disable-gstreamer-0-10 --disable-avmedia --disable-gstreamer-1-0
 
 RUN make
 
