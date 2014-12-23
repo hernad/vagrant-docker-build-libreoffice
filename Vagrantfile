@@ -1,4 +1,4 @@
-ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+#ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
  
 Vagrant.configure("2") do |config|
 

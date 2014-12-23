@@ -1,13 +1,13 @@
 FROM hernad/precise-i386
 
-RUN echo "deb http://archive.ubuntu.com.ba/ubuntu/ trusty main universe restricted" > /etc/apt/sources.list
-RUN echo "deb-src http://archive.ubuntu.com.ba/ubuntu/ trusty main universe restricted" >> /etc/apt/sources.list
+#RUN echo "deb http://archive.ubuntu.com.ba/ubuntu/ trusty main universe restricted" > /etc/apt/sources.list
+#RUN echo "deb-src http://archive.ubuntu.com.ba/ubuntu/ trusty main universe restricted" >> /etc/apt/sources.list
 
-RUN echo "deb http://archive.ubuntu.com.ba/ubuntu/ trusty-updates main universe restricted" >> /etc/apt/sources.list
-RUN echo "deb-src http://archive.ubuntu.com.ba/ubuntu/ trusty-updates main universe restricted" >> /etc/apt/sources.list
+#RUN echo "deb http://archive.ubuntu.com.ba/ubuntu/ trusty-updates main universe restricted" >> /etc/apt/sources.list
+#RUN echo "deb-src http://archive.ubuntu.com.ba/ubuntu/ trusty-updates main universe restricted" >> /etc/apt/sources.list
 
-RUN echo "deb http://archive.ubuntu.com.ba/ubuntu/ trusty-security main universe restricted" >> /etc/apt/sources.list
-RUN echo "deb-src http://archive.ubuntu.com.ba/ubuntu/ trusty-security main universe restricted" >> /etc/apt/sources.list
+#RUN echo "deb http://archive.ubuntu.com.ba/ubuntu/ trusty-security main universe restricted" >> /etc/apt/sources.list
+#RUN echo "deb-src http://archive.ubuntu.com.ba/ubuntu/ trusty-security main universe restricted" >> /etc/apt/sources.list
 
 RUN apt-get -y update
 
