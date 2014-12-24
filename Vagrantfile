@@ -26,4 +26,16 @@ Vagrant.configure("2") do |config|
   end
 
 
+  config.vm.define "jvm_platform_linux32" do |a|
+    a.vm.provider "docker" do |d|
+      d.build_dir = "jvm"
+      d.build_args = ["-t=jvm_platform_linux32"]
+      d.name = "jvm_platform_linux32"
+      d.remains_running = false
+      d.vagrant_machine = "dockerhost"
+      d.vagrant_vagrantfile = "./DockerHostVagrantfile"
+    end
+  end
+
+
 end
