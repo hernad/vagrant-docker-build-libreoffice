@@ -27,7 +27,9 @@ RUN patch -f -p1 < test_off.diff ; echo ignore patch exit
 RUN patch -f -p1 < lo_platform_configure_ac.diff ; echo ignore patch exit
 
 #RUN ./autogen.sh --host=i586-unknown-linux-gnu --disable-crashdump --disable-sdremote --disable-telepathy --disable-cve-tests --disable-online-update --disable-liblangtag --with-build-version="Built by hernad"  --disable-gltf --without-galleries --enable-release-build --enable-epm --with-package-format="deb rpm"
-RUN ./autogen.sh --host=i586-unknown-linux-gnu --disable-crashdump --disable-sdremote --disable-telepathy --disable-cve-tests --disable-online-update --disable-liblangtag --with-build-version="Built by hernad"  --disable-gltf --without-galleries --enable-release-build --disable-gstreamer-0-10 --disable-avmedia --disable-gstreamer-1-0
+#RUN apt-get install -y libgstreamer0.10-dev
+RUN ./autogen.sh --host=i586-unknown-linux-gnu --disable-crashdump --disable-sdremote --disable-telepathy --disable-cve-tests --disable-online-update --disable-liblangtag --with-build-version="Built by hernad"  --disable-gltf --without-galleries --enable-release-build --disable-gstreamer-1-0 
+#--disable-gstreamer-0-10 --disable-avmedia --disable-gstreamer-1-0
 
 RUN make
 
@@ -41,6 +43,6 @@ RUN chmod 0600 /root/hernad_ssh.key
 RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no LO_Platform.zip root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/linux32
 RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no LO_Platform_sdk.zip root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/linux32/
 
-RUN ssh -i /root/hernad_ssh.key -o StrictHostKeyChecking=no LO_Platform.zip root@files.bring.out.ba chown hernad /mnt/HD/HD_a2/bringout/Platform/linux32/LO_Platform*.zip
+RUN ssh -i /root/hernad_ssh.key -o StrictHostKeyChecking=no root@files.bring.out.ba chown hernad /mnt/HD/HD_a2/bringout/Platform/linux32/LO_Platform*.zip
  
 CMD ["bash"]
