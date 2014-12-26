@@ -46,12 +46,14 @@ RUN unzip gradle.zip
 
 # rm /root/jvm/sources/openjdk8-javafx-openjfx/build/linux_tools.properties
 
-
 RUN git clone https://github.com/hgomez/obuildfactory.git
-RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no   root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/jvm_hg.tar.gz /root/jvm/jvm_hg.tar.gz
-RUN tar xfz jvm_hg.tar.gz
 
-RUN PATH=/root/jvm/gradle-1.8/bin:$PATH JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386  XUSE_NEW_BUILD_SYSTEM=true XBUILD=false ./obuildfactory/openjdk8-javafx/linux/standalone-job.sh ; echo ok
+# tar.gz izgleda ne sadrzi potrebne openjfx source-ove
+#RUN echo "jvm_hg.tar.gz =.hg + sources"
+#RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no  root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/jvm_hg.tar.gz /root/jvm/jvm_hg.tar.gz
+#RUN tar xfz jvm_hg.tar.gz
+
+#RUN PATH=/root/jvm/gradle-1.8/bin:$PATH JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386  XUSE_NEW_BUILD_SYSTEM=true XBUILD=false ./obuildfactory/openjdk8-javafx/linux/standalone-job.sh ; echo ok
 RUN PATH=/root/jvm/gradle-1.8/bin:$PATH JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386  XUSE_NEW_BUILD_SYSTEM=true XBUILD=true ./obuildfactory/openjdk8-javafx/linux/standalone-job.sh
 
 WORKDIR  /root/jvm/OBF_DROP_DIR/openjdk8
@@ -59,4 +61,3 @@ RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no  j2sdk-image-i686-*-
 RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no  j2re-image-i686-*-`date +%Y%m%d`.tar.bz2  root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/linux32/JVM_Platform.tar.bz2
 
 RUN ssh -i /root/hernad_ssh.key -o StrictHostKeyChecking=no root@files.bring.out.ba chown hernad /mnt/HD/HD_a2/bringout/Platform/linux32/JVM_Platform*
- 
