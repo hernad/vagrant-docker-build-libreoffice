@@ -1,7 +1,6 @@
 FROM hernad/precise-i386
 
 RUN apt-get -y update
-
 RUN apt-get install  -y git mercurial zip bzip2 unzip tar
 RUN  apt-get install -y ccache make gcc g++ ca-certificates ca-certificates-java
 RUN  apt-get install -y libX11-dev libxext-dev libxrender-dev libxtst-dev  
@@ -13,7 +12,7 @@ RUN apt-get install -y bison flex gperf libasound2-dev libgl1-mesa-dev libgstrea
 
 RUN apt-get install -y pkg-config libxtst-dev libgtk2.0-dev libavcodec-dev libavformat-dev
  
-RUN gem install fpm
+#RUN gem install fpm
 
 # passwordless ssh to-from files.bring.out.ba
 ADD hernad_ssh.key /root/
@@ -49,7 +48,7 @@ RUN unzip gradle.zip
 
 
 RUN git clone https://github.com/hgomez/obuildfactory.git
-RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no   root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/jvm_hg.tar.gz
+RUN scp -i /root/hernad_ssh.key -o StrictHostKeyChecking=no   root@files.bring.out.ba:/mnt/HD/HD_a2/bringout/Platform/jvm_hg.tar.gz /root/jvm/jvm_hg.tar.gz
 RUN tar xfz jvm_hg.tar.gz
 
 RUN PATH=/root/jvm/gradle-1.8/bin:$PATH JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386  XUSE_NEW_BUILD_SYSTEM=true XBUILD=false ./obuildfactory/openjdk8-javafx/linux/standalone-job.sh ; echo ok
