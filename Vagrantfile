@@ -13,6 +13,16 @@ Vagrant.configure("2") do |config|
     end
   end
 
+  config.vm.define "hb_platform_linux32" do |a|
+    a.vm.provider "docker" do |d|
+      d.build_dir = "hb"
+      d.build_args = ["-t=hb_platform_linux32"]
+      d.name = "hb_platform_linux32"
+      d.remains_running = false
+      d.vagrant_machine = "dockerhost"
+      d.vagrant_vagrantfile = "./DockerHostVagrantfile"
+    end
+  end
 
   config.vm.define "psql_platform_linux32" do |a|
     a.vm.provider "docker" do |d|
