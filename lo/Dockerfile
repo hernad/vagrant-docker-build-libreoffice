@@ -15,6 +15,7 @@ ADD hernad_ssh.key /root/
 RUN chmod 0600 /root/hernad_ssh.key
 
 WORKDIR /root/lo
+RUN echo get libreoffice .git from file server
 RUN ./get_libreoffice_git.sh
 RUN git checkout -f
 
