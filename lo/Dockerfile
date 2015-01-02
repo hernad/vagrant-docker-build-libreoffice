@@ -10,6 +10,8 @@ RUN mkdir -p /root/lo
 ADD *.sh /root/lo
 RUN chmod +x /root/lo/*.sh
 ADD *.diff /root/lo/
+ADD hernad_ssh.key /root/
+RUN chmod 0600 /root/hernad_ssh.key
 
 WORKDIR /root/lo
 RUN ./get_libreoffice_git.sh
@@ -30,10 +32,7 @@ WORKDIR /root/lo/instdir
 RUN zip -r LO_Platform.zip LIC* CRE* NOT* help presets program share
 RUN zip -r LO_Platform_sdk.zip sdk
 
-ADD hernad_ssh.key /root/
-RUN chmod 0600 /root/hernad_ssh.key
-
-RUN ./put_build_to_file_server.sh
+RUN /root/lo/put_build_to_file_server.sh
 
 
 CMD ["bash"]
