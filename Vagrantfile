@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "lo_platform_linux32" do |a|
     a.vm.provider "docker" do |d|
-      d.build_dir = "."
+      d.build_dir = "lo"
       d.build_args = ["-t=lo_platform_linux32"]
       d.name = "lo_platform_linux32"
       d.remains_running = false
