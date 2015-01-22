@@ -1,3 +1,3 @@
 .vagrant
-ftp_user_password.config
+*.config
 *.key

@@ -6,7 +6,6 @@ RUN apt-get -y build-dep  libreoffice
 
 RUN mkdir -p /root/lo
 
-#ADD lobuild/libreoffice_core.tar.gz /root/lo
 ADD *.sh /root/lo/
 RUN chmod +x /root/lo/*.sh
 ADD *.diff /root/lo/
