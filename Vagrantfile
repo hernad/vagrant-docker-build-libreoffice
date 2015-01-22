@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
       d.build_args = ["-t=lo_platform_linux32"]
       d.name = "lo_platform_linux32"
       d.remains_running = false
-      d.vagrant_machine = "dockerhost"
+      d.vagrant_machine = "dockerhost-linux32"
       d.vagrant_vagrantfile = "./DockerHostVagrantfile"
     end
   end
@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
       d.build_args = ["-t=hb_platform_linux32"]
       d.name = "hb_platform_linux32"
       d.remains_running = false
-      d.vagrant_machine = "dockerhost"
+      d.vagrant_machine = "dockerhost-linux32"
       d.vagrant_vagrantfile = "./DockerHostVagrantfile"
     end
   end
@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
       d.build_args = ["-t=psql_platform_linux32"]
       d.name = "psql_platform_linux32"
       d.remains_running = false
-      d.vagrant_machine = "dockerhost"
+      d.vagrant_machine = "dockerhost-linux32"
       d.vagrant_vagrantfile = "./DockerHostVagrantfile"
     end
   end
@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
       d.build_args = ["-t=jvm_platform_linux32"]
       d.name = "jvm_platform_linux32"
       d.remains_running = false
-      d.vagrant_machine = "dockerhost"
+      d.vagrant_machine = "dockerhost-linux32"
       d.vagrant_vagrantfile = "./DockerHostVagrantfile"
     end
   end
