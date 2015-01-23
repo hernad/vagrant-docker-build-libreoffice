@@ -23,7 +23,6 @@ source scripts/ubuntu_set_envars.sh
 
 ./build_release.sh
 
-cp /vagrant/hernad_ssh.key $HOME
 chmod 0700 $HOME/*.key
 
 scripts/build_gz.sh XX --push

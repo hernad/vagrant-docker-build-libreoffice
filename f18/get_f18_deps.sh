@@ -28,7 +28,8 @@ function get_file() {
 }
 
 
-cd /root/f18
+mkdir -p /root/F18_knowhow
+cd /root/F18_knowhow
 FILE=F18_git.tar.gz
 get_file $FILE
 tar xvfz $FILE
