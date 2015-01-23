@@ -3,7 +3,7 @@ FROM hernad/precise-i386
 RUN echo hb v2
 RUN apt-get -y update
 RUN apt-get -y install wget curl git zip unzip
-RUN apt-get -y install build-essential bison flex libcups2-dev libcurl4-nss-dev libssl-dev libmysqlclient-dev
+RUN apt-get -y install build-essential bison flex libcups2-dev libcurl4-nss-dev libssl-dev libmysqlclient-dev libx11-dev
 
 RUN mkdir -p /root/hb
 
