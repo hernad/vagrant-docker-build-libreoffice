@@ -2,8 +2,8 @@ FROM hernad/precise-i386
 
 RUN echo hb v2
 RUN apt-get -y update
-RUN apt-get -y install wget curl git unzip
-RUN apt-get -y install build-essential bison flex
+RUN apt-get -y install wget curl git zip unzip
+RUN apt-get -y install build-essential bison flex libcups2-dev libcurl4-nss-dev libssl-dev libmysqlclient-dev
 
 RUN mkdir -p /root/hb
 
@@ -18,10 +18,7 @@ RUN ./get_hb_git.sh
 RUN git checkout -f
 RUN ./build_harbour.sh
 
-RUN HB_INSTALL_PREFIX=/root/HB_Platform make
-
 WORKDIR /root/Platform/HB
-RUN apt-get -y install zip
 RUN zip -r HB_Platform.zip .
 RUN zip -r HB_Platform_sdk.zip .
 
