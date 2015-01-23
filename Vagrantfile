@@ -47,5 +47,16 @@ Vagrant.configure("2") do |config|
     end
   end
 
+  config.vm.define "f18_linux32" do |a|
+    a.vm.provider "docker" do |d|
+      d.build_dir = "f18"
+      d.build_args = ["-t=f18_linux32"]
+      d.name = "f18_linux32"
+      d.remains_running = false
+      d.vagrant_machine = "dockerhost-linux32"
+      d.vagrant_vagrantfile = "./DockerHostVagrantfile"
+    end
+  end
+
 
 end
