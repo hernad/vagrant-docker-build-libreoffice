@@ -1,4 +1,4 @@
-#ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
  
 Vagrant.configure("2") do |config|
 
@@ -19,8 +19,8 @@ Vagrant.configure("2") do |config|
       d.build_args = ["-t=hb_platform_linux32"]
       d.name = "hb_platform_linux32"
       d.remains_running = false
-      d.vagrant_machine = "dockerhost-linux32"
-      d.vagrant_vagrantfile = "./DockerHostVagrantfile"
+#      d.vagrant_machine = "dockerhost-linux32"
+#      d.vagrant_vagrantfile = "./DockerHostVagrantfile"
     end
   end
 
