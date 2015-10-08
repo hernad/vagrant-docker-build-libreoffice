@@ -1,3 +1,10 @@
+
+
+   export PATH=$PATH:/opt/vagrant/bin
+
+   cd f18; docker build -t f18_linux32 -f Dockerfile.f18_linux32 .
+
+
 vagrant up lo_platform_linux32
 ===========================================
 
@@ -14,3 +21,15 @@ vagrant up psql_platform_linux32
 ===========================================================
 
 1) kopirati hernad_ssh.key u postgresql/ 
+
+
+
+## postgresql linux32 
+
+vagrant up psql_platform_linux32 --provider=docker
+
+
+## libreoffice
+
+vagrant up lo_platform_linux32 --provider=docker
+
